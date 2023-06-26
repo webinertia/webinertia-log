@@ -7,7 +7,7 @@ namespace Webinertia\Log\Processors;
 use Laminas\Log\Processor\PsrPlaceholder as Placeholder;
 use Laminas\I18n\Translator\TranslatorAwareInterface;
 use Laminas\I18n\Translator\TranslatorAwareTrait;
-use User\Service\UserService;
+use Webinertia\User\Service\UserService;
 
 use function array_merge;
 
@@ -15,7 +15,7 @@ final class PsrPlaceholder extends Placeholder implements TranslatorAwareInterfa
 {
     use TranslatorAwareTrait;
 
-    /** @var UserService $userService */
+    /** @var UserServiceInterface $userService */
     protected $userService;
 
     public function __construct(?UserService $userService)
@@ -25,9 +25,10 @@ final class PsrPlaceholder extends Placeholder implements TranslatorAwareInterfa
 
     public function process(array $event): array
     {
-        if ($event['extra'] === []) {
-            $event['extra'] += $this->userService->getLogData();
-        } elseif ($event['extra'] !== []) {
+        if (! isset($event['extra']) || $event['extra'] === null) {
+            $event['extra'] = [];
+        }
+        if ($this->userService instanceof UserServiceInterface) {
             $event['extra'] = array_merge($this->userService->getLogData(), $event['extra']);
         }
         return parent::process($event);

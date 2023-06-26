@@ -10,6 +10,7 @@ use Laminas\EventManager\EventInterface;
 use Laminas\EventManager\EventManagerInterface;
 use Laminas\EventManager\ListenerAggregateInterface;
 use Laminas\EventManager\ListenerAggregateTrait;
+use Laminas\Mvc\MvcEvent;
 use Laminas\Mvc\I18n\Translator;
 use Laminas\I18n\Translator\TranslatorAwareInterface;
 use Laminas\I18n\Translator\TranslatorAwareTrait;
@@ -31,15 +32,17 @@ final class LogListener implements ListenerAggregateInterface, TranslatorAwareIn
         $this->setLogger($logger);
         $this->translator = $translator;
         //
-        if ($config['server']['log_errors']) {
-            $log = $this->logger->getLogger();
-            $log::registerErrorHandler($log, true);
-        }
+        // if ($config['server']['log_errors']) {
+        //     $log = $this->logger->getLogger();
+        //     $log::registerErrorHandler($log, true);
+        // }
     }
 
     /** @inheritDoc */
     public function attach(EventManagerInterface $events, $priority = 1): void
     {
+        $this->listeners[] = $events->attach(MvcEvent::EVENT_DISPATCH_ERROR, [$this, 'log']);
+
         $sharedMananger    = $events->getSharedManager();
         $this->listeners[] = $sharedMananger->attach(
             LoggerAwareInterface::class,
@@ -97,6 +100,8 @@ final class LogListener implements ListenerAggregateInterface, TranslatorAwareIn
         $name        = $event->getName();
         $logMessage  = $event->getTarget();
         $params      = $event->getParams();
+        $error       = $event->getError();
+        $ex          = $params['exception'] ?? null;
         if ($params !== []) {
             $passContext = true;
         }
@@ -106,6 +111,12 @@ final class LogListener implements ListenerAggregateInterface, TranslatorAwareIn
         } else {
             unset($params);
             $this->logger->$name($this->getTranslator()->translate($logMessage));
+        }
+        if ($error !== null) {
+            // we have an error
+        }
+        if ($ex !== null) {
+            // we have an exception
         }
     }
 }

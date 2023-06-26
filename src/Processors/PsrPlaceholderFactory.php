@@ -6,8 +6,8 @@ namespace Webinertia\Log\Processors;
 
 use Laminas\ServiceManager\Factory\FactoryInterface;
 use Psr\Container\ContainerInterface;
-use User\Service\UserServiceInterface;
 use Webinertia\Log\Processors\PsrPlaceholder;
+use Webinertia\User\Service\UserServiceInterface;
 
 final class PsrPlaceholderFactory implements FactoryInterface
 {
@@ -17,6 +17,14 @@ final class PsrPlaceholderFactory implements FactoryInterface
         $requestedName,
         ?array $options = null
     ): PsrPlaceholder {
-        return new $requestedName($container->get(UserServiceInterface::class));
+
+        if ($container->has(UserServiceInterface::class)) {
+            return new $requestedName($container->get(UserServiceInterface::class));
+        }
+
+        if ($container->has('UserServiceInterface')) {
+            return new $requestedName($container->get('UserServiceInterface'));
+        }
+        return new $requestedName();
     }
 }

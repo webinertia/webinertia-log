@@ -18,7 +18,7 @@ final class PsrPlaceholder extends Placeholder implements TranslatorAwareInterfa
     /** @var UserServiceInterface $userService */
     protected $userService;
 
-    public function __construct(?UserService $userService)
+    public function __construct(?UserService $userService = null)
     {
         $this->userService = $userService;
     }

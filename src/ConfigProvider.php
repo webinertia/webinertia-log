@@ -19,6 +19,13 @@ final class ConfigProvider
         ];
     }
 
+    public function getDbAdapterConfig(): array
+    {
+        return [
+            'driver' => 'pdo_mysql',
+        ];
+    }
+
     public function getListenerConfig(): array
     {
         return [

@@ -1,12 +1,19 @@
 {
     "name": "webinertia/webinertia-log",
     "description": "Webinertia Log",
-    "type": "project",
     "license": "BSD-3-Clause",
     "keywords": [
         "webinertia",
         "mvc",
         "laminas log"
+    ],
+    "homepage": "https://github.com/webinertia/webinertia-log/discussions",
+    "authors": [
+        {
+            "name": "Joey Smith",
+            "email": "jsmith@webinertia.net",
+            "homepage": "https://webinertia.net/"
+        }
     ],
     "require": {
         "php": "~8.1.0 || ~8.2.0",

@@ -25,6 +25,6 @@ final class PsrPlaceholderFactory implements FactoryInterface
         if ($container->has('UserServiceInterface')) {
             return new $requestedName($container->get('UserServiceInterface'));
         }
-        return new $requestedName();
+        return new $requestedName(null);
     }
 }

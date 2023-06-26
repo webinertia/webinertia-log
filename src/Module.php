@@ -10,6 +10,7 @@ final class Module
     {
         $configProvider = new ConfigProvider();
         return [
+            'db'              => $configProvider->getDbAdapterConfig(),
             'listeners'       => $configProvider->getListenerConfig(),
             'log_processors'  => $configProvider->getLogProcessorConfig(),
             'psr_log'         => $configProvider->getPsrLogConfig(),

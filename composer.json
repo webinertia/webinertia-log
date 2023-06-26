@@ -35,8 +35,7 @@
     },
     "extra": {
         "laminas": {
-            "component": "Webinertia\\Log",
-            "config-provider": "Webinertia\\Log\\ConfigProvider"
+            "module": "Webinertia\\Log"
         }
     },
     "autoload": {

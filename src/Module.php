@@ -10,6 +10,7 @@ final class Module
     {
         $configProvider = new ConfigProvider();
         return [
+            'app_settings'    => [], // this key is here to prevent errors when running stand alone
             'db'              => $configProvider->getDbAdapterConfig(),
             'listeners'       => $configProvider->getListenerConfig(),
             'log_processors'  => $configProvider->getLogProcessorConfig(),

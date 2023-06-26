@@ -18,7 +18,7 @@ class LogListenerFactory implements FactoryInterface
         return new $requestedName(
             $container->get(LoggerInterface::class),
             $container->get(Translator::class),
-            $container->get('config')['Webinertia_settings']
+            $container->get('config')['app_settings']
         );
     }
 }

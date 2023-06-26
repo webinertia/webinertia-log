@@ -41,12 +41,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Webinertia\\Log": "src/"
+            "Webinertia\\Log\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "WebinertiaTest\\LogTest": "test/"
+            "WebinertiaTest\\LogTest\\": "test/"
         }
     },
     "scripts": {

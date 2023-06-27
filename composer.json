@@ -1,6 +1,6 @@
 {
     "name": "webinertia/webinertia-log",
-    "description": "Webinertia Log",
+    "description": "Webinertia Log provides event driven logging for Laminas MVC applications",
     "license": "BSD-3-Clause",
     "keywords": [
         "webinertia",

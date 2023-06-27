@@ -7,7 +7,6 @@ namespace Webinertia\Log\Processors;
 use Laminas\Log\Processor\PsrPlaceholder as Placeholder;
 use Laminas\I18n\Translator\TranslatorAwareInterface;
 use Laminas\I18n\Translator\TranslatorAwareTrait;
-use Webinertia\User\Service\UserService;
 
 use function array_merge;
 
@@ -18,7 +17,7 @@ final class PsrPlaceholder extends Placeholder implements TranslatorAwareInterfa
     /** @var UserServiceInterface $userService */
     protected $userService;
 
-    public function __construct(?UserService $userService = null)
+    public function __construct(?UserServiceInterface $userService = null)
     {
         $this->userService = $userService;
     }

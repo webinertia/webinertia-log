@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Webinertia\Log;
 
-use Laminas\Db\Adapter\AdapterInterface;
 use Laminas\Log\Logger;
 use Psr\Log\LoggerInterface;
 
@@ -19,10 +18,15 @@ final class ConfigProvider
         ];
     }
 
-    public function getDbAdapterConfig(): array
+    public function getLogSettings(): array
     {
         return [
-            'driver' => 'pdo_mysql',
+            'log_settings' => [
+                'log_errors'      => true,
+                'log_exceptions'  => true,
+                'log_table_name'  => 'log',
+                'log_time_format' => 'm-d-Y H:i:s',
+            ],
         ];
     }
 
@@ -49,26 +53,10 @@ final class ConfigProvider
     {
         return [
             LoggerInterface::class => [
-                'writers'    => [
-                    'db' => [
-                        'name'     => 'db',
-                        'priority' => Logger::INFO,
-                        'options'  => [
-                            'table'     => 'log',
-                            'db'        => AdapterInterface::class,
-                            'formatter' => [
-                                'name'    => 'db',
-                                'options' => [
-                                    'dateTimeFormat' => 'm-d-Y H:i:s',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
                 'processors' => [
                     'psrplaceholder' => [
                         'name'     => Processors\PsrPlaceholder::class,
-                        'priority' => Logger::INFO,
+                        'priority' => Logger::DEBUG,
                     ],
                 ],
             ],

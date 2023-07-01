@@ -1,0 +1,17 @@
+/.ci/ export-ignore
+/.coveralls.yml export-ignore
+/.gitattributes export-ignore
+/.github/ export-ignore
+/.gitignore export-ignore
+/docs/ export-ignore
+/mkdocs.yml export-ignore
+/phpcs.xml export-ignore
+/phpstan.neon.dist export-ignore
+/phpunit.xml.dist export-ignore
+/.laminas-ci.json export-ignore
+/test/ export-ignore
+/vagrantfile export-ignore
+/Dockerfile export-ignore
+/renovate.json export-ignore
+# Force our line endings to be LF, even for Windows
+* text eol=lf

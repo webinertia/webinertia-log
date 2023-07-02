@@ -132,8 +132,8 @@ final class LogListener implements ListenerAggregateInterface, TranslatorAwareIn
         }
         if ($event instanceof MvcEvent) {
             assert($event instanceof MvcEvent);
-            /** @var Exception $ex */
-            $ex = $params['exception'];
+            /** @var Exception|null $ex */
+            $ex = $params['exception'] ?? null;
 
             if ($ex instanceof Throwable || $ex instanceof Exception) {
                 /**

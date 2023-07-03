@@ -6,7 +6,6 @@ namespace Webinertia\Log;
 
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\Adapter\AdapterInterface;
-use Laminas\Log\Formatter\Db as Formatter;
 use Laminas\Log\Formatter\Json;
 use Laminas\Log\Writer\Db;
 use Laminas\Log\Writer\Stream;

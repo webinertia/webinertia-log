@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Webinertia\Log\Processors;
+namespace Webinertia\Log\Processor;
 
 use Laminas\ServiceManager\Factory\FactoryInterface;
 use Psr\Container\ContainerInterface;
-use Webinertia\Log\Processors\PsrPlaceholder;
 use Webinertia\User\Service\UserServiceInterface;
 
 final class PsrPlaceholderFactory implements FactoryInterface

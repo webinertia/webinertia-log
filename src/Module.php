@@ -10,7 +10,7 @@ final class Module
     {
         $configProvider = new ConfigProvider();
         return [
-            'app_settings'    => $configProvider->getLogSettings(),
+            'log_settings'    => $configProvider->getLogSettings(),
             'listeners'       => $configProvider->getListenerConfig(),
             'log_processors'  => $configProvider->getLogProcessorConfig(),
             'psr_log'         => $configProvider->getPsrLogConfig(),

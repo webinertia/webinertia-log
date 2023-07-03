@@ -118,7 +118,7 @@ final class LogListener implements ListenerAggregateInterface, TranslatorAwareIn
         $logMessage  = $event->getTarget();
         $params      = $event->getParams();
 
-        if ($event instanceof LogEvent) {
+        if (! $event instanceof MvcEvent) {
             if ($params !== []) {
                 $passContext = true;
             }

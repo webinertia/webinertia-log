@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Webinertia\Log\Processors;
+namespace Webinertia\Log\Processor;
 
 use Laminas\Log\Processor\PsrPlaceholder as Placeholder;
 use Laminas\I18n\Translator\TranslatorAwareInterface;

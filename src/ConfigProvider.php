@@ -21,12 +21,10 @@ final class ConfigProvider
     public function getLogSettings(): array
     {
         return [
-            'log_settings' => [
                 'log_errors'      => true,
                 'log_exceptions'  => true,
                 'log_table_name'  => 'log',
                 'log_time_format' => 'm-d-Y H:i:s',
-            ],
         ];
     }
 
@@ -41,10 +39,10 @@ final class ConfigProvider
     {
         return [
             'aliases'   => [
-                'psrplaceholder' => Processors\PsrPlaceholder::class,
+                'psrplaceholder' => Processor\PsrPlaceholder::class,
             ],
             'factories' => [
-                Processors\PsrPlaceholder::class => Processors\PsrPlaceholderFactory::class,
+                Processor\PsrPlaceholder::class => Processor\PsrPlaceholderFactory::class,
             ],
         ];
     }
@@ -55,7 +53,7 @@ final class ConfigProvider
             LoggerInterface::class => [
                 'processors' => [
                     'psrplaceholder' => [
-                        'name'     => Processors\PsrPlaceholder::class,
+                        'name'     => Processor\PsrPlaceholder::class,
                         'priority' => Logger::DEBUG,
                     ],
                 ],
